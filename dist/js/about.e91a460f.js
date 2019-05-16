@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["about"],{f820:function(e,t,n){"use strict";n.r(t);var u=function(){var e=this,t=e.$createElement;e._self._c;return e._m(0)},a=[function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("main",[n("h1",[e._v("About")]),n("p",[e._v("Sample app built with the Vue/Vue-Router/Vuex stack, generated with @vue/cli.")])])}],l=n("2877"),r={},c=Object(l["a"])(r,u,a,!1,null,null,null);t["default"]=c.exports}}]);
-//# sourceMappingURL=about.e91a460f.js.map
