@@ -1,5 +1,7 @@
 # vue-blog-app
 
+Work In Progress
+
 ## Project setup
 ```
 npm install
