@@ -18,6 +18,9 @@
       </span>
       <span v-if="isAuthenticated">
         <li>
+          <router-link :to="{ name: 'postCreator' }">Create Post</router-link>
+        </li>
+        <li>
           <a href="#" @click.prevent="logout">Logout</a>
         </li>
       </span>

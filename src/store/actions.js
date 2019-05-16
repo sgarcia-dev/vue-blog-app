@@ -1,11 +1,15 @@
 import { API } from '../config';
 
-const { headers, url } = API;
+const { headers, userUrl, postUrl } = API;
 
 export default {
   login,
   signup,
-  getUsers
+  getUsers,
+  getUserDetails,
+  getPosts,
+  getPostDetails,
+  getPostComments
 };
 
 function login (context, payload) {
@@ -19,7 +23,7 @@ function login (context, payload) {
   };
 
   commit('startLoadingState');
-  return fetch(`${url}/login`, request)
+  return fetch(`${userUrl}/login`, request)
     .then(res => res.json())
     .then((data) => {
       const { error, token } = data;
@@ -29,6 +33,7 @@ function login (context, payload) {
         throw new Error(error);
       } else {
         commit('setSession', { token, email });
+        return data;
       }
     });
 }
@@ -44,7 +49,7 @@ function signup (context, payload) {
   };
 
   commit('startLoadingState');
-  return fetch(`${url}/register`, request)
+  return fetch(`${userUrl}/register`, request)
     .then(res => res.json())
     .then((data) => {
       const { error } = data;
@@ -66,7 +71,7 @@ function getUsers (context) {
   };
 
   commit('startLoadingState');
-  return fetch(`${url}/users`, request)
+  return fetch(`${userUrl}/users`, request)
     .then(res => res.json())
     .then((data) => {
       const { error, data: users } = data;
@@ -77,6 +82,82 @@ function getUsers (context) {
         throw new Error(error);
       } else {
         commit('setUsers', { users })
+        return data;
       }
+    });
+}
+
+function getUserDetails (context, payload) {
+  const { commit } = context;
+  const { id } = payload;
+
+  const request = {
+    method: 'GET',
+    headers
+  };
+
+  commit('startLoadingState');
+  return fetch(`${postUrl}/users/${id}`, request)
+    .then(res => res.json())
+    .then((data) => {
+      commit('stopLoadingState');
+      commit('setUserDetails', { user: data });
+      return data;
+    });
+}
+
+function getPosts (context) {
+  const { commit } = context;
+
+  const request = {
+    method: 'GET',
+    headers
+  };
+
+  commit('startLoadingState');
+  return fetch(`${postUrl}/posts`, request)
+    .then(res => res.json())
+    .then((data) => {
+      commit('stopLoadingState');
+      commit('setPosts', { posts: data });
+      return data;
+    });
+}
+
+function getPostDetails (context, payload) {
+  const { commit } = context;
+  const { id } = payload;
+
+  const request = {
+    method: 'GET',
+    headers
+  };
+
+  commit('startLoadingState');
+  return fetch(`${postUrl}/posts/${id}`, request)
+    .then(res => res.json())
+    .then((data) => {
+      commit('stopLoadingState');
+      commit('setPostDetails', { post: data });
+      return data;
+    });
+}
+
+function getPostComments (context, payload) {
+  const { commit } = context;
+  const { id } = payload;
+
+  const request = {
+    method: 'GET',
+    headers
+  };
+
+  commit('startLoadingState');
+  return fetch(`${postUrl}/comments?postId=${id}`, request)
+    .then(res => res.json())
+    .then((data) => {
+      commit('stopLoadingState');
+      commit('setPostComments', { comments: data });
+      return data;
     });
 }

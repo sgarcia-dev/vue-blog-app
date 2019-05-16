@@ -1,5 +1,6 @@
 export const API = {
-  url: 'https://reqres.in/api',
+  userUrl: 'https://reqres.in/api',
+  postUrl: 'https://jsonplaceholder.typicode.com',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'

@@ -13,7 +13,11 @@ const { token = null, email = null } = JSON.parse(sessionJSON);
 export default new Vuex.Store({
   state: {
     data: {
-      users: []
+      users: [],
+      userDetails: {},
+      posts: [],
+      postDetails: {},
+      postComments: []
     },
     communication: {
       loading: false,

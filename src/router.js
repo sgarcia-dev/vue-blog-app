@@ -1,8 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// import Home from './views/Home.vue'
 import Home from './views/Home.vue'
+import About from './views/About.vue'
+import Login from './views/Login.vue'
+import Signup from './views/Signup.vue'
+import Creator from './views/Post/Creator.vue'
+import Editor from './views/Post/Editor.vue'
+import Preview from './views/Post/Preview.vue'
 
 Vue.use(Router)
 
@@ -16,26 +21,32 @@ export default new Router({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: About
     },
     {
       path: '/login',
       name: 'login',
-      // route level code-splitting
-      // this generates a separate chunk (login.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "login" */ './views/Login.vue')
+      component: Login
     },
     {
       path: '/signup',
       name: 'signup',
-      // route level code-splitting
-      // this generates a separate chunk (signup.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "signup" */ './views/Signup.vue')
+      component: Signup
+    },
+    {
+      path: '/post/details/:id',
+      name: 'postPreview',
+      component: Preview
+    },
+    {
+      path: '/post/editor/:id',
+      name: 'postEditor',
+      component: Editor
+    },
+    {
+      path: '/post/creator',
+      name: 'postCreator',
+      component: Creator
     }
   ]
 })

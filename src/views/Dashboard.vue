@@ -1,25 +1,25 @@
 <template>
   <main>
     <h1>Dashboard</h1>
-    <UserList :users="users" />
+    <PostList :posts="posts" />
   </main>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex';
-import UserList from '../components/UserList.vue';
+import PostList from '../components/PostList.vue';
 
 export default {
   name: 'Dashboard',
-  components: { UserList },
+  components: { PostList },
   computed: mapState({
-    users: state => state.data.users
+    posts: state => state.data.posts
   }),
   methods: {
-    ...mapActions(['getUsers'])
+    ...mapActions(['getPosts'])
   },
   created () {
-    this.getUsers();
+    this.getPosts();
   }
 };
 </script>
