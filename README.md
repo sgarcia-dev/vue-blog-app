@@ -1,6 +1,9 @@
 # vue-blog-app
 
-Work In Progress, built as a sample app to learn the Vue stack.
+Work In Progress, built as a sample app to learn the Vue stack. Uses 2 sample online json endpoints:
+
+* https://jsonplaceholder.typicode.com/
+* https://reqres.in/
 
 ## Project setup
 ```
