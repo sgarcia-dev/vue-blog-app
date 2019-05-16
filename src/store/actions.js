@@ -4,7 +4,8 @@ const { headers, url } = API;
 
 export default {
   login,
-  signup
+  signup,
+  getUsers
 };
 
 function login (context, payload) {
@@ -52,6 +53,30 @@ function signup (context, payload) {
       if (error) {
         commit('setError', { error });
         throw new Error(error);
+      }
+    });
+}
+
+function getUsers (context) {
+  const { commit } = context;
+
+  const request = {
+    method: 'GET',
+    headers
+  };
+
+  commit('startLoadingState');
+  return fetch(`${url}/users`, request)
+    .then(res => res.json())
+    .then((data) => {
+      const { error, data: users } = data;
+
+      commit('stopLoadingState');
+      if (error) {
+        commit('setError', { error });
+        throw new Error(error);
+      } else {
+        commit('setUsers', { users })
       }
     });
 }

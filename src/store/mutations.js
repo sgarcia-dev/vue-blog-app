@@ -1,4 +1,5 @@
 export default {
+  setUsers,
   startLoadingState,
   stopLoadingState,
   setError,
@@ -6,6 +7,10 @@ export default {
   setSession,
   deleteSession
 };
+
+function setUsers (state, payload) {
+  state.data.users = payload.users;
+}
 
 function startLoadingState (state) {
   state.communication.loading = true;
@@ -27,9 +32,11 @@ function setSession (state, payload) {
   const { token, email } = payload;
   const newSessionData = { token, email };
   state.session = { ...state.session, ...newSessionData };
+  window.localStorage.setItem('session', JSON.stringify(newSessionData));
 }
 
 function deleteSession (state, payload) {
   const newSessionData = { token: null, email: null };
   state.session = { ...state.session, ...newSessionData };
+  window.localStorage.removeItem('session');
 }
