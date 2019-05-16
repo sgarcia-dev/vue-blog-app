@@ -27,12 +27,12 @@ export default {
       const payload = { email, password };
 
       this.login(payload).then(() => {
-        alert('Login Succesful! Redirecting to Dashboard ...');
+        this.$toasted.success('Login Succesful!');
         this.$router.push({
-          name: 'dashboard'
+          name: 'home'
         });
       }).catch((err) => {
-        alert(err.message);
+        this.$toasted.error(err.message);
       });
     }
   }

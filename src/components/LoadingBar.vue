@@ -19,7 +19,7 @@ export default {
   left: 0;
   width: 100vw;
   padding: 0.5rem 0;
-  background-color: #42b983;
+  background-color: gray;
   color: white;
   text-align: center;
   transform: translateY(100%);

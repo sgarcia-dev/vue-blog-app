@@ -27,12 +27,12 @@ export default {
       const payload = { email, password };
 
       this.signup(payload).then(() => {
-        alert('User creation succesful! Redirecting to Login ...');
+        this.$toasted.success('User creation succesful! Please Log In.');
         this.$router.push({
           name: 'login'
         });
       }).catch((err) => {
-        alert(err.message);
+        this.$toasted.error(err.message);
       });
     }
   }

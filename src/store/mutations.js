@@ -30,7 +30,6 @@ function setSession (state, payload) {
 }
 
 function deleteSession (state, payload) {
-  const { token, email } = payload;
-  const newSessionData = { token, email };
+  const newSessionData = { token: null, email: null };
   state.session = { ...state.session, ...newSessionData };
 }
