@@ -1,6 +1,6 @@
 # vue-blog-app
 
-Work In Progress
+Work In Progress, built as a sample app to learn the Vue stack.
 
 ## Project setup
 ```
